@@ -5,11 +5,11 @@
     <aside class="col-sm-4">
       <%= form_with(model: @usertasklist, local: true) do |f| %>
         <div class="form-group">
-          <%= f.label :title, 'Title' %>
+          <%= f.label :title, 'Task_Title' %>
           <%= f.text_area :title, class: 'form-control', rows: 1 %>
         </div>
         <div class="form-group">
-          <%= f.label :content, 'Content' %>
+          <%= f.label :content, 'Task' %>
           <%= f.text_area :content, class: 'form-control', rows: 5 %>
         </div>
         <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
