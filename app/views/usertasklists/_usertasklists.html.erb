@@ -1,0 +1,22 @@
+<ul class="list-unstyled">
+  <% usertasklists.each do |usertasklist| %>
+    <li class="media mb-3">
+      <div class="media-body">
+        <div>
+          <%= link_to usertasklist.user.name, user_path(usertasklist.user) %> <span class="text-muted">posted at <%= usertasklist.created_at %></span>
+        </div>
+        <div>
+          <p><%= usertasklist.title %></p>
+          <p><%= usertasklist.content %></p>
+        </div>
+        <div>
+          <% if current_user == usertasklist.user %>
+            <%= link_to "Delete", usertasklist, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate usertasklists %>
+  <li class="dropdown-item"><%= link_to 'Logout', logout_path, method: :delete %></li>
+</ul>

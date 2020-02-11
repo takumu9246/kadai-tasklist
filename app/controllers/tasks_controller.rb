@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
+    before_action :require_user_logged_in,
     def index
-        @tasks = Task.all
+      if logged_in?
+        @usertasklist = current_user.usertasklists.build  # form_with 用
+        @usertasklists = current_user.usertasklists.order(id: :desc).page(params[:page])
+      end
     end
     
     def create
