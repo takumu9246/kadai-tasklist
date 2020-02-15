@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
     before_action :require_user_logged_in
-    before_action :correct_user, only: [:destory]
+    before_action :correct_user, only: [:edit, :update,:destroy,:show]
     
     def index
       if logged_in?
@@ -13,7 +13,7 @@ class TasksController < ApplicationController
         # @task = Task.new(task_params) 
         @task = current_user.tasks.build(task_params)
 
-        if @task.save!
+        if @task.save
           flash[:success] = 'Task が正常に投稿されました'
           redirect_to @task
         else
